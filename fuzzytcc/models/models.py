@@ -4,6 +4,7 @@ from fuzzytcc.ext.database import db
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String)
+    email = db.Column(db.String)
     senha = db.Column(db.String)
     eadmin = db.Column(db.Boolean)
     
