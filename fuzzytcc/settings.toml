@@ -1,0 +1,9 @@
+[default]
+DEBUG = true
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost:5432/fuzzytcc'
+SQLALCHEMY_TRACK_MODIFICATIONS = true
+TITLE = "Fuzzy TCC"
+SECRET_KEY = "jadkfbsdkjbfbh"
+PASSWORD_SCHEMES = ['postgres']
+EXTENSIONS = [
+]
