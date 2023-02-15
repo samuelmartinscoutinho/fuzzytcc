@@ -9,4 +9,4 @@ def minimal_app(**config):
 def create_app(**config):
     app = minimal_app(**config)
     configuracao.carregar_extensoes(app)
-    return 
+    return app
