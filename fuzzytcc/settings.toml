@@ -6,4 +6,5 @@ TITLE = "Fuzzy TCC"
 SECRET_KEY = "jadkfbsdkjbfbh"
 PASSWORD_SCHEMES = ['postgres']
 EXTENSIONS = [
+    "fuzzytcc.ext.database:init_app",
 ]
