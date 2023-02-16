@@ -8,11 +8,12 @@ class Usuario(db.Model):
     senha = db.Column(db.String)
     eadmin = db.Column(db.Boolean)
     
-    def __init__(self, login:str, senha:str, eadmin:bool):
+    def __init__(self, login:str, senha:str, email:str,eadmin:bool):
         self.login = login
         self.senha = generate_password_hash(senha)
+        self.email = email
         self.eadmin = eadmin
-
+        
 class Professor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String)
