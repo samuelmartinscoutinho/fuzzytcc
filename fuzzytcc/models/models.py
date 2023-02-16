@@ -24,7 +24,7 @@ class Professor(db.Model):
     def __init__(self, nome:str, genero:str, usuario:Usuario):
         self.nome = nome
         self.genero = genero
-        self.usuario = usuario
+        self.usuario_relationship = usuario
         
     
 class Aluno(db.Model):
@@ -37,7 +37,7 @@ class Aluno(db.Model):
     def __init__(self, nome:str, genero:str, usuario:Usuario):
         self.nome = nome
         self.genero = genero
-        self.usuario = usuario
+        self.usuario_relationship = usuario
         
 class Avaliacao(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -75,17 +75,17 @@ class Avaliacao(db.Model):
         self.tratamento_osseo = tratamento_osseo
         self.tontura_frequente = tontura_frequente
         self.valor_fuzzy = valor_fuzzy
-        self.aluno = aluno
+        self.aluno_relationship = aluno
     
 class Treino(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     treinos = db.Column(db.String)
     aluno = db.Column(db.Integer, db.ForeignKey(Aluno.id))
-    aluno = db.relationship(Aluno)
+    aluno_relationship = db.relationship(Aluno)
     
     def __init__(self, treinos:str, aluno:Aluno):
         self.treinos = treinos
-        self.aluno = aluno
+        self.aluno_relationship = aluno
     
 class Regra(db.Model):
     id = db.Column(db.Integer, primary_key=True)
