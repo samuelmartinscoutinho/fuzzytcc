@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <title>Fuzzy TCC</title>
     <meta charset="utf-8" />
@@ -10,6 +11,7 @@
     <!-- Core CSS -->
     <link type="text/css" href="{{ url_for('static', filename='/css/bootstrap.min.css')}}" rel="stylesheet">
     <link type="text/css" href="{{ url_for('static', filename='/css/sidebar.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='/css/datatables.min.css')}}" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -36,13 +38,21 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100">
-        {% block conteudo %} {%endblock%}
+    <div class="col-md-12">
+        <div class="col-12 col-md-12">
+            <br> {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %} {% endif %} {% endwith %} {% block conteudo %} {%endblock%}
+        </div>
     </div>
     <!-- Core JS -->
     <script src="{{ url_for('static', filename='/js/jquery.js')}}"></script>
     <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ url_for('static', filename='/js/sidebar.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/datatables.min.js')}}"></script>
 </body>
 
 </html>
