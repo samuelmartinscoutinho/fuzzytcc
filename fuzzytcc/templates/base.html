@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <head>
     <title>Fuzzy TCC</title>
     <meta charset="utf-8" />
@@ -8,8 +9,14 @@
     <meta name="keywords" content="Tickets APP">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Core JS -->
+    <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/sidebar.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/datatables.min.js')}}"></script>
+
     <!-- Core CSS -->
     <link type="text/css" href="{{ url_for('static', filename='/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='/css/datatables.min.css')}}" rel="stylesheet">
     <link type="text/css" href="{{ url_for('static', filename='/css/sidebar.css')}}" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -47,11 +54,6 @@
             {% endfor %} {% endif %} {% endwith %} {% block conteudo %} {%endblock%}
         </div>
     </div>
-    <!-- Core JS -->
-    <script src="{{ url_for('static', filename='/js/jquery.js')}}"></script>
-    <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='/js/sidebar.js')}}"></script>
-    <script src="{{ url_for('static', filename='/js/datatables.min.js')}}"></script>
 </body>
 
 </html>
