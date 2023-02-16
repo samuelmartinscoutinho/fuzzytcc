@@ -56,7 +56,7 @@ class Avaliacao(db.Model):
     tontura_frequente = db.Column(db.Boolean)
     valor_fuzzy = db.Column(db.String)
     aluno = db.Column(db.Integer, db.ForeignKey(Aluno.id))
-    aluno = db.relationship(Aluno)
+    aluno_relationship = db.relationship(Aluno)
     
     def __init__(self, idade:int, altura:float, peso:float, imc:float,
                  percentual_gordura:float, percentual_massa:float, efumante:bool, ehipertenso:bool, ediabetico:bool,
