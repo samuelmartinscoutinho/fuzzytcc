@@ -8,4 +8,5 @@ PASSWORD_SCHEMES = ['postgres']
 EXTENSIONS = [
     "fuzzytcc.ext.database:init_app",
     "fuzzytcc.ext.comandos:init_app",
+    "fuzzytcc.blueprints:init_app",
 ]
