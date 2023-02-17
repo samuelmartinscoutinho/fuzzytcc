@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block conteudo %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Cadastro de Pertinencia</h4>
+                <hr>
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="imcBaixoInput" class="form-label">IMC Baixo</label>
+                            <input type="number" class="form-control" id="imcBaixoInput" name="imcBaixo" value="{{pertinencia.imc_baixo}}" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="imcMedioInput" class="form-label">IMC Medio</label>
+                            <input type="number" class="form-control" id="imcMedioInput" name="imcMedio" value="{{pertinencia.imc_medio}}" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="imcAltonput" class="form-label">IMC Alto</label>
+                            <input type="number" class="form-control" id="imcAltonput" name="imcAlto" value="{{pertinencia.imc_alto}}" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="percentualGorduraBaixoInput" class="form-label">Percentual de Gordura Baixo</label>
+                            <input type="number" class="form-control" id="percentualGorduraBaixoInput" name="percentualGorduraBaixo" value="{{pertinencia.percentual_gordura_baixo}}" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="percentualGorduraMedioInput" class="form-label">Percentual de Gordura Medio</label>
+                            <input type="number" class="form-control" id="percentualGorduraMedioInput" name="percentualGorduraMedio" value="{{pertinencia.percentual_gordura_medio}}" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="percentualGorduraAltoInput" class="form-label">Percentual de Gordura Alto</label>
+                            <input type="number" class="form-control" id="percentualGorduraAltoInput" name="percentualGorduraAlto" value="{{pertinencia.percentual_gordura_alto}}" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="percentualMassaAltoInput" class="form-label">Percentual de Massa Baixo</label>
+                            <input type="number" class="form-control" id="percentualMassaAltoInput" name="percentualMassaBaixo" value="{{pertinencia.percentual_massa_baixo}}" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="percentualMassaMedioInput" class="form-label">Percentual de Massa Alto Medio </label>
+                            <input type="number" class="form-control" id="percentualMassaMedioInput" name="percentualMassaMedio" value="{{pertinencia.percentual_massa_medio}}" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="percentualMassaAltoInput" class="form-label">Percentual de Massa Alto</label>
+                            <input type="number" class="form-control" id="percentualMassaAltoInput" name="percentualMassaAlto" value="{{pertinencia.percentual_massa_alto}}" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="/" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" class="btn btn-success float-end">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

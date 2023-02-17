@@ -124,12 +124,9 @@ class Pertinencia(db.Model):
     percentual_massa_baixo = db.Column(db.Float)
     percentual_massa_medio = db.Column(db.Float)
     percentual_massa_alto = db.Column(db.Float)
-    efumante = db.Column(db.Boolean)
-    ediabetico = db.Column(db.Boolean)
-    ehipertenso = db.Column(db.Boolean)
     
     def __init__(self, imc_baixo:float, imc_medio:float, imc_alto:float, percentual_gordura_baixo:float,percentual_gordura_medio:float,percentual_gordura_alto:float,
-                 percentual_massa_baixo:float, percentual_massa_medio:float, percentual_massa_alto:float, efumante:bool, ediabetico:bool, ehipertenso:float):
+                 percentual_massa_baixo:float, percentual_massa_medio:float, percentual_massa_alto:float):
         self.imc_baixo = imc_baixo
         self.imc_medio = imc_medio
         self.imc_alto = imc_alto
@@ -139,6 +136,3 @@ class Pertinencia(db.Model):
         self.percentual_massa_baixo = percentual_massa_baixo
         self.percentual_massa_medio = percentual_massa_medio
         self.percentual_massa_alto = percentual_massa_alto
-        self.efumante = efumante
-        self.ediabetico = ediabetico
-        self.ehipertenso = ehipertenso
