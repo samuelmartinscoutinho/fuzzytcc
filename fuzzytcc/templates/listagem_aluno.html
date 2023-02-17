@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block conteudo %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Listagem de Aluno</h4>
+                <box-icon type='solid' name='edit-alt'></box-icon>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/alunos/cadastro" class="btn btn-success">Novo</a>
+                    </div>
+                </div>
+                <br>
+                <table class="table" id="tabelaListagemAlunos" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Gênero</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for aluno, usuario in alunos%}
+                        <tr>
+                            <td>{{aluno.id}}</td>
+                            <td>{{aluno.nome}}</td>
+                            <td>{{aluno.genero}}</td>
+                            <td>{{usuario.email}}</td>
+                            <td>
+                                <a href="/alunos/editar/{{aluno.id}}" style="color:black"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <i class="fa-solid fa-regular fa-trash btnDeletarAluno" data="{{usuario.id}}"></i>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="excluirAlunoModal" tabindex="-1" aria-labelledby="excluirAlunoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="excluirAlunoModalLabel">Exlusão</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Confirma a exlusão deste aluno?</div>
+            <div class="modal-footer">
+                <form method="POST" action="/alunos/deletar">
+                    <input type="text" class="form-control" id="idAlunoInput" name="idAluno" hidden>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btnConfirmarDeletarAluno">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#tabelaListagemAlunos').on('click', '.btnDeletarAluno', function() {
+            $('#excluirAlunoModal').modal('show');
+            $('#idAlunoInput').val($(this).attr('data'));
+        });
+    });
+</script>
+{%endblock%}
