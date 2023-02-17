@@ -1,0 +1,48 @@
+ {% extends "base.html" %} {% block conteudo %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Editar Professor</h4>
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-7 form-group">
+                            <label for="nomeProfessorInput" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nomeProfessorInput" name="nomeProfessor" value="{{professor_editar[0].nome}}">
+                        </div>
+                        <div class="col-5 form-group">
+                            <label for="nomeProfessorInput" class="form-label">Gênero</label>
+                            <select class="form-select" aria-label="generoProfessoreselect" id="generoProfessoreselect" name="generoProfessor">
+                            <option value="Masculino" {%if professor_editar[0].genero == "Masculino" %}selected{%endif%}>Masculino</option>
+                            <option value="Feminino" {%if professor_editar[0].genero == "Feminino" %}selected{%endif%}>Feminino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="loginProfessorInput" class="form-label">Login</label>
+                            <input type="text" class="form-control" id="loginProfessorInput" name="loginProfessor" value="{{professor_editar[1].login}}" disabled>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="emailProfessorInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailProfessorInput" name="emailProfessor" value="{{professor_editar[1].email}}">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="senhaProfessorInput" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senhaProfessorInput" name="senhaProfessor" disabled>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="/Professores" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" class="btn btn-success float-end">Editar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

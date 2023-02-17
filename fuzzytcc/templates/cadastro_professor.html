@@ -1,0 +1,49 @@
+ {% extends "base.html" %} {% block conteudo %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Cadastro de Professor</h4>
+                <hr>
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-7 form-group">
+                            <label for="nomeProfessorInput" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nomeProfessorInput" name="nomeProfessor" required>
+                        </div>
+                        <div class="col-5 form-group">
+                            <label for="nomeProfessorInput" class="form-label">Gênero</label>
+                            <select class="form-select" aria-label="generoProfessoreselect" id="generoProfessoreselect" name="generoProfessor" required>
+                            <option value="Masculino" selected>Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="loginProfessorInput" class="form-label">Login</label>
+                            <input type="text" class="form-control" id="loginProfessorInput" name="loginProfessor" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="emailProfessorInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailProfessorInput" name="emailProfessor" required>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="senhaProfessorInput" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senhaProfessorInput" name="senhaProfessor" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="/Professores" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" class="btn btn-success float-end">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

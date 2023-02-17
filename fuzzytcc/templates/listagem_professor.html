@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% block conteudo %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Listagem de Professores</h4>
+                <box-icon type='solid' name='edit-alt'></box-icon>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/professores/cadastro" class="btn btn-success">Novo</a>
+                    </div>
+                </div>
+                <br>
+                <table class="table" id="tabelaListagemProfessores" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Gênero</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for professor, usuario in professores%}
+                        <tr>
+                            <td>{{professor.id}}</td>
+                            <td>{{professor.nome}}</td>
+                            <td>{{professor.genero}}</td>
+                            <td>{{usuario.email}}</td>
+                            <td>
+                                <a href="/professores/editar/{{professor.id}}" style="color:black"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <i class="fa-solid fa-regular fa-trash btnDeletarProfessor" data="{{usuario.id}}"></i>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="excluirprofessorModal" tabindex="-1" aria-labelledby="excluirprofessorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="excluirprofessorModalLabel">Exlusão</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Confirma a exlusão deste professor?</div>
+            <div class="modal-footer">
+                <form method="POST" action="/professores/deletar">
+                    <input type="text" class="form-control" id="idProfessorInput" name="idProfessor" hidden>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btnConfirmarDeletarProfessor">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#tabelaListagemProfessores').on('click', '.btnDeletarProfessor', function() {
+            $('#excluirprofessorModal').modal('show');
+            $('#idProfessorInput').val($(this).attr('data'));
+        });
+    });
+</script>
+{%endblock%}
