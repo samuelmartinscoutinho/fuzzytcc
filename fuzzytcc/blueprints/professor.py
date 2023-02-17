@@ -1,5 +1,5 @@
 from flask import request, render_template, flash, redirect, url_for
-from fuzzytcc.models.models import Usuario,Aluno, Professor
+from fuzzytcc.models.models import Usuario, Professor
 from fuzzytcc.ext.database import db
 
 def listar_professores():
