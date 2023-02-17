@@ -93,22 +93,35 @@ class Regra(db.Model):
     regra_fuzzy = db.Column(db.String)
     treino = db.Column(db.String)
     tempo = db.Column(db.Integer)
-    imc = db.Column(db.Boolean)
-    percentual_gordura = db.Column(db.Boolean)
-    percentual_massa = db.Column(db.Boolean)
+    imc_baixo = db.Column(db.Boolean)
+    imc_medio = db.Column(db.Boolean)
+    imc_alto = db.Column(db.Boolean)
+    percentual_gordura_baixo = db.Column(db.Boolean)
+    percentual_gordura_medio = db.Column(db.Boolean)
+    percentual_gordura_alto = db.Column(db.Boolean)
+    percentual_massa_baixo = db.Column(db.Boolean)
+    percentual_massa_medio = db.Column(db.Boolean)
+    percentual_massa_alto = db.Column(db.Boolean)
     efumante = db.Column(db.Boolean)
     ediabetico = db.Column(db.Boolean)
     ehipertenso = db.Column(db.Boolean)
     
-    def __init__(self, regra_portugues:str, regra_fuzzy:str, treino:str, tempo:int, imc:bool, percentual_gordura:bool,
-                 percentual_massa:bool, efumante:bool, ediabetico:bool, ehipertenso:bool):
+    def __init__(self, regra_portugues:str, regra_fuzzy:str, treino:str, tempo:int, imc_baixo:bool,imc_medio:bool,imc_alto:bool, 
+                 percentual_gordura_baixo:bool,percentual_gordura_medio:bool,percentual_gordura_alto:bool,
+                 percentual_massa_baixo:bool, percentual_massa_medio:bool, percentual_massa_alto:bool, efumante:bool, ediabetico:bool, ehipertenso:bool):
         self.regra_portuges = regra_portugues
         self.regra_fuzzy = regra_fuzzy
         self.treino = treino
         self.tempo = tempo
-        self.imc = imc
-        self.percentual_gordura = percentual_gordura
-        self.percentual_massa = percentual_massa
+        self.imc_baixo = imc_baixo
+        self.imc_medio = imc_medio
+        self.imc_alto = imc_alto
+        self.percentual_gordura_baixo = percentual_gordura_baixo
+        self.percentual_gordura_medio = percentual_gordura_medio
+        self.percentual_gordura_alto = percentual_gordura_alto
+        self.percentual_massa_baixo = percentual_massa_baixo
+        self.percentual_massa_medio = percentual_massa_medio
+        self.percentual_massa_alto = percentual_massa_alto
         self.efumante = efumante
         self.ediabetico = ediabetico
         self.ehipertenso = ehipertenso
