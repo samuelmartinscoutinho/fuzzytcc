@@ -18,7 +18,6 @@ def cadastrar_pertinencia():
         percentual_massa_alto = request.form.get('percentualMassaAlto')
         
         pertinencia = Pertinencia.query.first()
-        
         if pertinencia is None:
             try:
                 nova_pertinencia = Pertinencia(
