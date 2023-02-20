@@ -8,7 +8,7 @@ def listar_regras():
 
 def cadastrar_regra():
     if request.method == 'GET':
-        return render_template('cadastro_regra.html')
+        return render_template('registro_regra.html', regra=None, tipo_cadastro='Cadastrar Regra')
     elif request.method == 'POST':
         a = []
         operador = request.form.get('operador')
@@ -92,7 +92,7 @@ def editar_regra(regra:int):
     if request.method == 'GET':
         regra_editar = Regra.query.filter(Regra.id == regra).first()
         if regra_editar is not None:
-            return render_template('editar_regra.html', regra=regra_editar, tipo_cadastro='Editar Regra')
+            return render_template('registro_regra.html', regra=regra_editar, tipo_cadastro='Editar Regra')
         else:
             flash('Não foi possivel localizar estas regra! Tente outra!', 'warning')
             return redirect(url_for('regra.listar_regras'))
