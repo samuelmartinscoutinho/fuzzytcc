@@ -5,7 +5,7 @@ from fuzzytcc.ext.database import db
 def cadastrar_pertinencia():
     if request.method == 'GET':
         pertinencia = Pertinencia.query.first()
-        return render_template('cadastro_pertinencia.html', pertinencia=pertinencia)
+        return render_template('registro_pertinencia.html', pertinencia=pertinencia)
     elif request.method == 'POST':
         imc_baixo = request.form.get('imcBaixo')
         imc_medio = request.form.get('imcMedio')
