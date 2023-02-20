@@ -91,6 +91,7 @@ class Regra(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     regra_portugues = db.Column(db.String)
     regra_fuzzy = db.Column(db.String)
+    operador = db.Column(db.String)
     treino = db.Column(db.String)
     tempo = db.Column(db.Integer)
     imc_baixo = db.Column(db.Boolean)
@@ -106,11 +107,12 @@ class Regra(db.Model):
     ediabetico = db.Column(db.Boolean)
     ehipertenso = db.Column(db.Boolean)
     
-    def __init__(self, regra_portugues:str, regra_fuzzy:str, treino:str, tempo:int, imc_baixo:bool,imc_medio:bool,imc_alto:bool, 
+    def __init__(self, regra_portugues:str, regra_fuzzy:str, operador:str, treino:str, tempo:int, imc_baixo:bool,imc_medio:bool,imc_alto:bool, 
                  percentual_gordura_baixo:bool,percentual_gordura_medio:bool,percentual_gordura_alto:bool,
                  percentual_massa_baixo:bool, percentual_massa_medio:bool, percentual_massa_alto:bool, efumante:bool, ediabetico:bool, ehipertenso:bool):
         self.regra_portugues = regra_portugues
         self.regra_fuzzy = regra_fuzzy
+        self.operador = operador
         self.treino = treino
         self.tempo = tempo
         self.imc_baixo = imc_baixo
