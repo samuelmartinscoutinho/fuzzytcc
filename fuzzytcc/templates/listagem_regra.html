@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block conteudo %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Listagem de Aluno</h4>
+                <box-icon type='solid' name='edit-alt'></box-icon>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/regras/cadastro" class="btn btn-success">Novo</a>
+                    </div>
+                </div>
+                <br>
+                <table class="table" id="tabelaListagemRegras" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Regra</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for regra in regras%}
+                        <tr>
+                            <td>{{regra.id}}</td>
+                            <td>{{regra.regra_portugues}}</td>
+                            <td>
+                                <a href="/regras/editar/{{regra.id}}" style="color:black"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <i class="fa-solid fa-regular fa-trash btnDeletarRegra" data="{{regra.id}}"></i>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="excluirRegraModal" tabindex="-1" aria-labelledby="excluirRegraModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="excluirRegraModalLabel">Exlusão</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Confirma a exlusão desta regra?</div>
+            <div class="modal-footer">
+                <form method="POST" action="/regras/deletar">
+                    <input type="text" class="form-control" id="idRegraInput" name="idRegra" hidden>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btnConfirmarDeletarRegra">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#tabelaListagemRegras').on('click', '.btnDeletarRegra', function() {
+            $('#excluirRegraModal').modal('show');
+            $('#idRegraInput').val($(this).attr('data'));
+        });
+    });
+</script>
+{%endblock%}

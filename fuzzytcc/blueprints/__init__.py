@@ -2,6 +2,7 @@ from flask import Blueprint
 from .aluno import *
 from .professor import *
 from .pertinencia import *
+from .regra import *
 
 bp_aluno = Blueprint('aluno', __name__, template_folder='templates', static_folder='static')
 bp_aluno.add_url_rule('/alunos', view_func=listar_alunos, methods=['GET'])
@@ -18,7 +19,14 @@ bp_professor.add_url_rule('/professores/deletar', view_func=deletar_professor, m
 bp_pertinencia = Blueprint('pertinencia', __name__, template_folder='templates', static_folder='static')
 bp_pertinencia.add_url_rule('/pertinencia/cadastro', view_func=cadastrar_pertinencia, methods=['GET', 'POST'])
 
+bp_regra = Blueprint('regra', __name__, template_folder='templates', static_folder='static')
+bp_regra.add_url_rule('/regras', view_func=listar_regras, methods=['GET'])
+bp_regra.add_url_rule('/regras/cadastro', view_func=cadastrar_regra, methods=['GET', 'POST'])
+bp_professor.add_url_rule('/regras/editar/<regra>', view_func=editar_regra, methods=['GET','POST'])
+bp_professor.add_url_rule('/regras/deletar', view_func=deletar_regra, methods=['POST'])
+
 def init_app(app):
     app.register_blueprint(bp_aluno)
     app.register_blueprint(bp_professor)
     app.register_blueprint(bp_pertinencia)
+    app.register_blueprint(bp_regra)
