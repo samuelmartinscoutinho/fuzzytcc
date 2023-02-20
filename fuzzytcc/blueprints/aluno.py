@@ -8,7 +8,7 @@ def listar_alunos():
 
 def cadastrar_aluno():
     if request.method == 'GET':
-        return render_template('cadastro_aluno.html')
+        return render_template('registro_aluno.html', aluno=(None, None), tipo_cadastro ='Cadastrar Aluno')
     elif request.method == 'POST':
         nome = request.form.get('nomeAluno')
         genero = request.form.get('generoAluno')
@@ -44,13 +44,13 @@ def cadastrar_aluno():
         except Exception as expt:
             db.session.rollback()
             flash('Não foi possivel cadastrar o aluno! Tente novamente!', 'danger')
-            return render_template('cadastro_aluno.html')
+            return render_template('registro_aluno.html')
 
 def editar_aluno(aluno:int):
     if request.method == 'GET':
         aluno_editar = db.session.query(Aluno,Usuario).join(Usuario, Aluno.usuario==Usuario.id).filter(Aluno.id == aluno).order_by(Aluno.nome).first()
         if aluno_editar is not None:
-            return render_template('editar_aluno.html', aluno_editar=aluno_editar)
+            return render_template('registro_aluno.html', aluno=aluno_editar, tipo_cadastro='Editar Aluno')
         else:
             flash('Não foi possivel localizar este aluno! Tente outro!', 'warning')
             return redirect(url_for('aluno.listar_alunos'))
@@ -83,7 +83,6 @@ def editar_aluno(aluno:int):
         
 def deletar_aluno():
     id_usuario = request.form.get('idAluno')
-    print(id_usuario)
     try:
         Aluno.query.filter(Aluno.usuario == id_usuario).delete()
         Usuario.query.filter(Usuario.id == id_usuario).delete()

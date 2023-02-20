@@ -1,20 +1,20 @@
- {% extends "base.html" %} {% block conteudo %}
+{% extends "base.html" %} {% block conteudo %}
 <div class="card">
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <h4 class="text-center">Editar Aluno</h4>
+                <h4 class="text-center">{{tipo_cadastro}}</h4>
                 <form method="POST">
                     <div class="row">
                         <div class="col-7 form-group">
                             <label for="nomeAlunoInput" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nomeAlunoInput" name="nomeAluno" value="{{aluno_editar[0].nome}}">
+                            <input type="text" class="form-control" id="nomeAlunoInput" name="nomeAluno" value="{{aluno[0].nome}}">
                         </div>
                         <div class="col-5 form-group">
                             <label for="nomeAlunoInput" class="form-label">Gênero</label>
                             <select class="form-select" aria-label="generoAlunoSelect" id="generoAlunoSelect" name="generoAluno">
-                            <option value="Masculino" {%if aluno_editar[0].genero == "Masculino" %}selected{%endif%}>Masculino</option>
-                            <option value="Feminino" {%if aluno_editar[0].genero == "Feminino" %}selected{%endif%}>Feminino</option>
+                            <option value="Masculino" {%if aluno[0].genero == "Masculino" %}selected{%endif%}>Masculino</option>
+                            <option value="Feminino" {%if aluno[0].genero == "Feminino" %}selected{%endif%}>Feminino</option>
                             </select>
                         </div>
                     </div>
@@ -22,27 +22,28 @@
                     <div class="row">
                         <div class="col-4 form-group">
                             <label for="loginAlunoInput" class="form-label">Login</label>
-                            <input type="text" class="form-control" id="loginAlunoInput" name="loginAluno" value="{{aluno_editar[1].login}}" disabled>
+                            <input type="text" class="form-control" id="loginAlunoInput" name="loginAluno" value="{{aluno[1].login}}" {%if tipo_cadastro=="Editar Aluno" %}disabled{%endif%}>
                         </div>
                         <div class="col-4 form-group">
                             <label for="emailAlunoInput" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailAlunoInput" name="emailAluno" value="{{aluno_editar[1].email}}">
+                            <input type="email" class="form-control" id="emailAlunoInput" name="emailAluno" value="{{aluno[1].email}}">
                         </div>
                         <div class="col-4 form-group">
                             <label for="senhaAlunoInput" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senhaAlunoInput" name="senhaAluno" disabled>
-                        </div>
+                            <input type="password" class="form-control" id="senhaAlunoInput" name="senhaAluno" {%if tipo_cadastro=="Editar Aluno" %}disabled{%endif%}>
+                        </div>>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="/alunos" class="btn btn-secondary">Voltar</a>
-                            <button type="submit" class="btn btn-success float-end">Editar</button>
-                        </div>
-                    </div>
-                </form>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <a href="/alunos" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-success float-end">{{tipo_cadastro}}</button>
+                </div>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}
