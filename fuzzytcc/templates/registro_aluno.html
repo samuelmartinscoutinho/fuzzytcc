@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block conteudo %}
+ {% extends "base.html" %} {% block conteudo %}
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -31,19 +31,18 @@
                         <div class="col-4 form-group">
                             <label for="senhaAlunoInput" class="form-label">Senha</label>
                             <input type="password" class="form-control" id="senhaAlunoInput" name="senhaAluno" {%if tipo_cadastro=="Editar Aluno" %}disabled{%endif%}>
-                        </div>>
+                        </div>
                     </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="/alunos" class="btn btn-secondary">Voltar</a>
+                            <button type="submit" class="btn btn-success float-end">{{tipo_cadastro}}</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <br>
-            <div class="row">
-                <div class="col-12">
-                    <a href="/alunos" class="btn btn-secondary">Voltar</a>
-                    <button type="submit" class="btn btn-success float-end">{{tipo_cadastro}}</button>
-                </div>
-            </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}
