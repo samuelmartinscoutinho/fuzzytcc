@@ -8,7 +8,7 @@ def listar_professores():
 
 def cadastrar_professor():
     if request.method == 'GET':
-        return render_template('cadastro_professor.html')
+        return render_template('registro_professor.html', professor=(None,None), tipo_cadastro='Cadastrar Professor')
     elif request.method == 'POST':
         nome = request.form.get('nomeProfessor')
         genero = request.form.get('generoProfessor')
@@ -19,7 +19,6 @@ def cadastrar_professor():
         if genero not in ['Masculino', 'Feminino']:
             flash('Não foi possivel cadastrar este professor! Pois foi informado um sexo inexistente!', 'danger')
             return redirect(url_for(f'professor.cadastrar_professor'))
-    
         try:
             novo_usuario = Usuario(
                 login=login, 
@@ -44,13 +43,13 @@ def cadastrar_professor():
         except Exception as expt:
             db.session.rollback()
             flash('Não foi possivel cadastrar o professor! Tente novamente!', 'danger')
-            return render_template('cadastro_professor.html')
+            return redirect(url_for(f'professor.cadastrar_professor'))
 
 def editar_professor(professor:int):
     if request.method == 'GET':
         professor_editar = db.session.query(Professor,Usuario).join(Usuario, Professor.usuario==Usuario.id).filter(Professor.id == professor).order_by(Professor.nome).first()
         if professor_editar is not None:
-            return render_template('editar_professor.html', professor_editar=professor_editar)
+            return render_template('registro_professor.html', professor=professor_editar, tipo_cadastro='Editar Professor')
         else:
             flash('Não foi possivel localizar este professor! Tente outro!', 'warning')
             return redirect(url_for('professor.listar_professores'))
@@ -62,7 +61,7 @@ def editar_professor(professor:int):
         
         if genero not in ['Masculino', 'Feminino']:
             flash('Não foi possivel editar este professor! Pois foi informado um sexo inexistente!', 'danger')
-            return redirect(url_for(f'professor.editar_professor', professor=professor))
+            return redirect(url_for(f'professor.editar_professor', professor=professor, tipo_cadastro='Editar Professor'))
         
         professor_editar = Professor.query.filter(Professor.id == professor).first()
         usuario_editar = Usuario.query.filter(Usuario.id == professor_editar.usuario).first()
@@ -79,7 +78,7 @@ def editar_professor(professor:int):
         except Exception as expt:
             db.session.rollback()
             flash('Não foi possivel editar este professor! Tente novamente!', 'danger')
-            return redirect(url_for(f'professor.editar_professor', professor=professor))
+            return redirect(url_for(f'professor.editar_professor', professor=professor, tipo_cadastro='Editar Professor'))
         
 def deletar_professor():
     id_usuario = request.form.get('idProfessor')
