@@ -61,7 +61,7 @@ def editar_professor(professor:int):
         
         if genero not in ['Masculino', 'Feminino']:
             flash('Não foi possivel editar este professor! Pois foi informado um sexo inexistente!', 'danger')
-            return redirect(url_for(f'professor.editar_professor', professor=professor, tipo_cadastro='Editar Professor'))
+            return redirect(url_for(f'professor.editar_professor', professor=professor))
         
         professor_editar = Professor.query.filter(Professor.id == professor).first()
         usuario_editar = Usuario.query.filter(Usuario.id == professor_editar.usuario).first()
@@ -78,7 +78,7 @@ def editar_professor(professor:int):
         except Exception as expt:
             db.session.rollback()
             flash('Não foi possivel editar este professor! Tente novamente!', 'danger')
-            return redirect(url_for(f'professor.editar_professor', professor=professor, tipo_cadastro='Editar Professor'))
+            return redirect(url_for(f'professor.editar_professor', professor=professor))
         
 def deletar_professor():
     id_usuario = request.form.get('idProfessor')
